@@ -49,8 +49,7 @@ script:
   - "echo 'c.HistoryAccessor.enabled = False\n' > $HOME/.ipython/profile_default/ipython_config.py"
   - if [[ "$STATIC" == "false" ]]; then
       python -c "import numpy; numpy.show_config()";
-      python setup.py -q develop;
-      py.test nengo_examples -v;
+      py.test . -v;
     else
-      flake8 -v nengo_examples && pylint nengo_examples;
+      flake8 -v . && pylint .;
     fi
